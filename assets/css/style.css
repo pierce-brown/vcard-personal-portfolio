@@ -721,6 +721,48 @@ main {
   line-height: 1.6;
 }
 
+.modal-category { display: none; }
+
+.modal-container[data-modal-type="portfolio"] .testimonials-modal {
+  display: block;
+  box-sizing: border-box;
+  width: calc(100% - 30px);
+  max-width: 900px;
+  max-height: calc(100vh - 30px);
+  overflow-y: auto;
+}
+
+.modal-container[data-modal-type="portfolio"] .modal-img-wrapper { display: block; }
+
+.modal-container[data-modal-type="portfolio"] .modal-avatar-box {
+  background: none;
+  width: 100%;
+  margin: 0 0 15px;
+  box-shadow: none;
+}
+
+.modal-container[data-modal-type="portfolio"] .modal-avatar-box img {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.modal-container[data-modal-type="portfolio"] .modal-img-wrapper > img,
+.modal-container[data-modal-type="portfolio"] .modal-content time,
+.modal-container[data-modal-type="portfolio"] [data-modal-text] {
+  display: none;
+}
+
+.modal-container[data-modal-type="portfolio"] .modal-category {
+  display: block;
+  color: var(--light-gray-70);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  text-transform: capitalize;
+}
+
 
 /**
  * #clients 

@@ -26,11 +26,17 @@ const overlay = document.querySelector("[data-overlay]");
 const modalImg = document.querySelector("[data-modal-img]");
 const modalTitle = document.querySelector("[data-modal-title]");
 const modalText = document.querySelector("[data-modal-text]");
+const modalCategory = document.querySelector("[data-modal-category]");
 
 // modal toggle function
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
+
+  if (!modalContainer.classList.contains("active")) {
+    modalContainer.dataset.modalType = "testimonial";
+    modalCategory.textContent = "";
+  }
 }
 
 // add click event to all modal items
@@ -38,10 +44,34 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 
   testimonialsItem[i].addEventListener("click", function () {
 
+    modalContainer.dataset.modalType = "testimonial";
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+    modalCategory.textContent = "";
+
+    testimonialsModalFunc();
+
+  });
+
+}
+
+// add click event to all portfolio items
+const portfolioItems = document.querySelectorAll("[data-filter-item] > a");
+
+for (let i = 0; i < portfolioItems.length; i++) {
+
+  portfolioItems[i].addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const projectImg = this.querySelector(".project-img img");
+    modalContainer.dataset.modalType = "portfolio";
+    modalImg.src = projectImg.src;
+    modalImg.alt = projectImg.alt;
+    modalTitle.textContent = this.querySelector(".project-title").textContent;
+    modalCategory.textContent = this.querySelector(".project-category").textContent;
+    modalText.innerHTML = "";
 
     testimonialsModalFunc();
 
